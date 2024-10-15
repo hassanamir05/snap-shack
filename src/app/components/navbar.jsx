@@ -1,0 +1,92 @@
+"use client"
+
+import { useState } from "react";
+import Image from "next/image";
+import Logo from "../../../public/logo.png";
+import Link from "next/link";
+import Button from "../components/button";
+import { ChevronDown, Menu, X } from "lucide-react"; // X for close, Menu for open
+
+const Links = [
+    {
+        name: "Home",
+        href: "",
+    },
+    {
+        name: "Features",
+        href: "",
+    },
+    {
+        name: "Pricing",
+        href: "",
+    },
+    {
+        name: "Contact",
+        href: "",
+    },
+];
+
+const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false); // State to handle navbar open/close
+
+    const toggleNavbar = () => {
+        setIsOpen(!isOpen); // Toggle the navbar
+    };
+
+    return (
+        <nav className="flex flex-row justify-between border-b-[#fff]/10 border-b-[0.5px] text-white py-[10px] w-full max-w-[1446px] px-[20px]">
+            {/* Logo and name */}
+            <span className="flex flex-row justify-center items-center w-auto px-5 md:px-[10px] ">
+                <Image src={Logo} alt="logo" className="h-[52px] w-[52px] md:h-[36px] md:w-[36px]" />
+                <p className="font-ginto text-[17px] font-bold leading-[18px] ml-2">SnagBot</p>
+            </span>
+
+            {/* Links and Buttons - Visible on larger screens */}
+            <span className="flex md:hidden flex-row gap-x-[30px] w-full items-center px-[70px]">
+                {Links.map((link, index) => (
+                    <span key={index} className="flex flex-row h-[16px]">
+                        <Link href={link.href} className="font-jakarta text-[15px] leading-[18px] mt-[0.5px]">
+                            {link.name}
+                        </Link>
+                        <ChevronDown height="16px" className="pt-1" />
+                    </span>
+                ))}
+            </span>
+
+            {/* Action buttons */}
+            <span className="flex md:hidden flex-row justify-center items-center w-auto px-10 gap-x-4">
+                <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin" />
+                <Button name="SignUp" customClass="bg-white text-black" />
+            </span>
+
+            {/* Mobile Menu - Only visible on small screens */}
+            <div
+                className={`md:fixed z-50 top-[0px] left-0 py-[20px] w-[200px] h-full bg-foreground text-white transition-transform transform ${isOpen ? "" : "hidden"
+                    }`}>
+                <div className="flex flex-col items-start  h-full px-[15px] space-y-2">
+                    {/* Links for small devices */}
+                    {Links.map((link, index) => (
+                        <span key={index} className="flex flex-row">
+                            <Link href={link.href} className="font-jakarta text-[18px]">
+                                {link.name}
+                            </Link>
+                            <ChevronDown height="16px" className="ml-0 mt-2" />
+                        </span>
+                    ))}
+
+                    {/* Action buttons for small devices */}
+                    <div className="flex flex-col space-y-4 w-full mt-[10px]">
+                        <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin border-2 border-white/10 md:w-full" />
+                        <Button name="SignUp" customClass="bg-white text-black" />
+                    </div>
+                </div>
+            </div>
+            <button className="md:flex hidden mr-[10px]" onClick={toggleNavbar}>
+                {/* Toggle between the menu icon and the close icon */}
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+        </nav>
+    );
+};
+
+export default Navbar;
