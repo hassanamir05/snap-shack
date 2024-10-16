@@ -58,7 +58,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center gap-y-[20px]">
+    <div className="flex flex-col items-center gap-y-[20px] md:px-[10px]">
       <Navbar />
       <div className="flex flex-col gap-y-5 mt-[60px]">
         <Heading text="Our Pricing " />

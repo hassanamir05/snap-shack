@@ -33,6 +33,10 @@ const details = [
         path: Building,
         title: 'Stressed Out',
     },
+    {
+        path: Art,
+        title: 'Feeling Creative?',
+    },
 
 
 ]
@@ -52,7 +56,7 @@ const Header = ({ isOpen, setIsOpen }) => {
     };
 
     return (
-        <div className="flex flex-row justify-between items-center border-b-[#fff]/10 border-b-[2px] text-white py-[15px] w-full max-w-[1446px] px-[10px]">
+        <div className="flex flex-row justify-between items-center border-b-[#fff]/10 border-b-[2px] text-white py-[15px] w-full max-w-[1446px] px-[10px] md:px-[20px]">
 
             {/* Logo and name */}
             <span className="md:flex flex-row items-center hidden">

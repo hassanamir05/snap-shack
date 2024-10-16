@@ -52,7 +52,7 @@ export default function Component({ isOpen, setIsOpen }) {
                 <span className="font-bold text-[14px] text-white">Today</span>
                 <ul>
                     {['Best Taco near me on budget', 'Cheapest sushi restaurant', 'Top rated Italian place', 'Vegan options nearby'].map((item, index) => (
-                        <li key={index} className="text-[14px] font-medium text-white/80 my-2 truncate">
+                        <li key={index} className="text-[14px] font-medium text-white/80 my-2 truncate fade-out-text">
                             {item}
                         </li>
                     ))}
@@ -63,7 +63,7 @@ export default function Component({ isOpen, setIsOpen }) {
                 <span className="font-bold text-[14px] text-white">Yesterday</span>
                 <ul>
                     {['Family-friendly restaurants', 'Best coffee shops for work'].map((item, index) => (
-                        <li key={index} className="text-[14px] font-medium text-white/80 my-2 truncate">
+                        <li key={index} className="text-[14px] font-medium text-white/80 my-2 truncate fade-out-text">
                             {item}
                         </li>
                     ))}
