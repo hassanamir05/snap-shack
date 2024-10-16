@@ -6,6 +6,11 @@ import Logo from "../../../public/logo.png";
 import Link from "next/link";
 import Button from "../components/button";
 import { ChevronDown, Menu, X } from "lucide-react"; // X for close, Menu for open
+import LoginPage from "./login";
+import SignupPage from "./signup";
+import Modal from "./modal";
+
+
 
 const Links = [
     {
@@ -27,10 +32,17 @@ const Links = [
 ];
 
 const Navbar = () => {
+
     const [isOpen, setIsOpen] = useState(false); // State to handle navbar open/close
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showForm, setShowForm] = useState('login')
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen); // Toggle the navbar
+    };
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
     };
 
     return (
@@ -55,8 +67,17 @@ const Navbar = () => {
 
             {/* Action buttons */}
             <span className="flex md:hidden flex-row justify-center items-center w-auto px-10 gap-x-4">
-                <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin" />
-                <Button name="SignUp" customClass="bg-white text-black" />
+                <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin"
+                    onClick={() => {
+                        setShowForm('login');
+                        toggleModal();
+                    }}
+                />
+                <Button name="SignUp" customClass="bg-white text-black"
+                    onClick={() => {
+                        setShowForm('signup');
+                        toggleModal();
+                    }} />
             </span>
 
             {/* Mobile Menu - Only visible on small screens */}
@@ -76,8 +97,18 @@ const Navbar = () => {
 
                     {/* Action buttons for small devices */}
                     <div className="flex flex-col space-y-4 w-full mt-[10px]">
-                        <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin border-2 border-white/10 md:w-full" />
-                        <Button name="SignUp" customClass="bg-white text-black" />
+                        <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin border-2 border-white/10 md:w-full"
+                            onClick={() => {
+                                setShowForm('login');
+                                toggleModal();
+                            }}
+                        />
+                        <Button name="SignUp" customClass="bg-white text-black"
+                            onClick={() => {
+                                setShowForm('signup');
+                                toggleModal();
+                            }}
+                        />
                     </div>
                 </div>
             </div>
@@ -85,6 +116,17 @@ const Navbar = () => {
                 {/* Toggle between the menu icon and the close icon */}
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
+
+            {/*Login/Signup Modal */}
+            {isModalOpen && (
+                <Modal onClose={toggleModal}>
+                    {showForm === 'login' ?
+                        <LoginPage closeModal={toggleModal} changeForm={setShowForm} />
+                        :
+                        <SignupPage closeModal={toggleModal} changeForm={setShowForm} />
+                    }
+                </Modal>
+            )}
         </nav>
     );
 };

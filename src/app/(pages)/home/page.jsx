@@ -12,7 +12,6 @@ import PricingSwitch from "../../components/switch";
 import PricingCard from "../../components/pricing-card";
 import SuggestionCard from "../../components/suggestion-card";
 import Footer from "../../components/footer";
-import Sidebar from "../../components/sidebar";
 import PricingTable from '../../components/pricing-table'
 
 {

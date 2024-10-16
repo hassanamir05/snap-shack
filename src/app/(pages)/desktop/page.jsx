@@ -9,9 +9,10 @@ const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row hide-scrollbar">
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div className={`flex flex-col w-full ml-[260px] md:ml-0 transition-all duration-300`}>
+
+      <div className={`flex flex-col w-full ml-[260px] md:ml-0 transition-all duration-300 hide-scrollbar`}>
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <ContentBox />
       </div>

@@ -76,11 +76,14 @@ const Header = ({ isOpen, setIsOpen }) => {
                 }
             </div>
 
-            {/*User name */}
-            {/* <p className="font-inter text-[14px] text-white font-semibold">John Doe</p> */}
 
             <span className="flex items-center md:hidden">
-                <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin" onClick={() => { setIsFormModalOpen(true) }} />
+                {/* <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin" onClick={() => { setIsFormModalOpen(true) }} /> */}
+
+
+                {/*User name */}
+                <p className="font-inter text-[14px] text-white font-semibold mr-2">John Doe</p>
+
                 <Image
                     src={PlaceHolder}
                     alt="image-placeholder"
