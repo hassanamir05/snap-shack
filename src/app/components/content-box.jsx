@@ -1,4 +1,9 @@
+"use client"
+
 import Image from "next/image"
+import { useState } from "react"
+
+{/*Components */ }
 import Logo from '../../../public/logo.png'
 import Heading from "./heading"
 import Text from "./text"
@@ -7,11 +12,18 @@ import Button from "./button"
 import Input from './input'
 import Message from './message'
 import Help from '../../../public/help.png'
+import Modal from "./modal"
+import LoginPage from "./login"
+import SignupPage from "./signup"
 
+
+{/*Images */ }
 import Burger from '../../../public/burger.png'
 import Art from '../../../public/art.png'
 import Cash from '../../../public/cash.png'
 import Building from '../../../public/building.png'
+
+
 
 
 const details = [
@@ -38,6 +50,17 @@ const details = [
 ]
 
 const ContentBox = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [showForm, setShowForm] = useState('login')
+
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+
     return (
         <div className="h-screen flex flex-col hide-scrollbar">
             <div className="flex-grow overflow-hidden hide-scrollbar">
@@ -51,8 +74,21 @@ const ContentBox = () => {
                             <Text content="Lorem ipsum dolor set amet consectetur adipsicing dolor set" customClass="text-center" />
 
                             <div className="flex flex-wrap gap-5 justify-center ">
-                                <Button name="Create Account" customClass="h-[49px] w-[265px] bg-primary text-black font-bold" />
-                                <Button name="Login" customClass="h-[49px] w-[265px] bg-black text-white font-light border border-white/30" />
+
+                                <Button name="Create Account" customClass="h-[49px] w-[265px] bg-primary text-black font-bold" onClick={() => {
+                                    setShowForm('signup')
+                                    toggleModal();
+                                }} />
+
+
+
+                                <Button name="Login" customClass="h-[49px] w-[265px] bg-black text-white font-light border border-white/30"
+                                    onClick={() => {
+                                        setShowForm('login')
+                                        toggleModal();
+                                    }}
+                                />
+
                             </div>
 
                             <div className="flex flex-wrap gap-5 md:gap-3 justify-center px-[10px] py-[50px] md:py-[20px]">
@@ -87,6 +123,15 @@ const ContentBox = () => {
             <button className="fixed right-5 bottom-20 bg-primary h-[45px] w-[45px] rounded-full border-none text-black flex justify-center items-center md:hidden">
                 <Image alt="help-logo" src={Help} className="h-[32px] w-[31px]" />
             </button>
+
+            {/*Login/Signup Modal */}
+            {isModalOpen && (
+                <Modal onClose={toggleModal}>
+                    {showForm === 'login' ?
+                        <LoginPage closeModal={toggleModal} changeForm={setShowForm} /> : <SignupPage closeModal={toggleModal} changeForm={setShowForm} />
+                    }
+                </Modal>
+            )}
         </div>
     )
 }

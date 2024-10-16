@@ -4,7 +4,7 @@ import Button from './button';
 
 const PricingTable = () => {
     return (
-        <div class="overflow-x-auto ">
+        <div class="overflow-x-auto my-[100px]">
 
             <table class="min-w-full text-left text-sm whitespace-nowrap">
 
