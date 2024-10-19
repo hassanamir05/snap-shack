@@ -71,7 +71,7 @@ const Page = () => {
         </div> */}
       </div>
 
-      <div className="w-full flex flex-row justify-center items-center gap-x-[40px] flex-wrap p-[20px] gap-y-5">
+      <div className="w-full flex flex-row justify-center items-center gap-x-[40px] flex-wrap p-[20px] gap-y-5 my-[20px]">
         {pricingData.map((plan, index) => (
           <PricingCard
             key={index}
