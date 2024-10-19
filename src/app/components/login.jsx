@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { X, Mail, Lock } from 'lucide-react';
 import Button from './button';
 import InputFieldLabel from './label-input';
-
+import { useDispatch } from 'react-redux'
+import { login } from '../lib/actions/user';
+import { redirect } from 'next/dist/server/api-utils';
 
 
 
@@ -12,9 +14,12 @@ import InputFieldLabel from './label-input';
 export default function LoginPage({ closeModal, changeForm }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
-    const handleLogin = () => {
+    const handleLogin = async() => {
         console.log('Login', { email, password });
+        let res=await dispatch(login(email,password))
+        console.log("login response is ",res)
         // Implement your login logic here
     };
 

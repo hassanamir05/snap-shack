@@ -53,8 +53,8 @@ const Page = () => {
   };
 
   const pricingData = [
-    { name: "Basic", monthlyPrice: 10, yearlyPrice: 100 },
-    { name: "Pro", monthlyPrice: 30, yearlyPrice: 300 },
+    { name: "Basic", monthlyPrice: 59, yearlyPrice: 100 },
+    // { name: "Pro", monthlyPrice: 30, yearlyPrice: 300 },
   ];
 
   return (
@@ -66,9 +66,9 @@ const Page = () => {
           content="Lorem ipsum dolor set amet consectetur adipsicing dolor set"
           customClass="text-center"
         />
-        <div className="flex justify-center items-center w-full h-auto">
+        {/* <div className="flex justify-center items-center w-full h-auto">
           <PricingSwitch isMonthly={isMonthly} onToggle={handleToggle} />
-        </div>
+        </div> */}
       </div>
 
       <div className="w-full flex flex-row justify-center items-center gap-x-[40px] flex-wrap p-[20px] gap-y-5">

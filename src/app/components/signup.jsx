@@ -1,18 +1,34 @@
 "use client";
+import { useRouter } from 'next/navigation';
 
 import React, { useState } from 'react';
 import { X, Mail, Lock, User } from 'lucide-react';
 import InputFieldLabel from './label-input';
 import Button from './button';
+import { useDispatch } from 'react-redux'
+import { register } from '../lib/actions/user';
+import { redirect, usePathname } from 'next/navigation'
 
 export default function SignupPage({ closeModal, changeForm }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
+    // const router = useRouter();
+    const router = useRouter();
 
-    const handleSignup = () => {
+  const handleRedirect = () => {
+    router.push('/desktop'); // Client-side redirect to /new-page
+  };
+    const handleSignup = async() => {
         console.log('Sign up', { name, email, password });
         // Implement your signup logic here
+        let res=await dispatch(register({name,email,password}))
+        console.log("signing response ",res)
+
+        if(res){
+            handleRedirect()
+        }
     };
 
     return (

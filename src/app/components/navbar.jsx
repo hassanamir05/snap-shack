@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Logo from "../../../public/logo.png";
 import Link from "next/link";
@@ -9,7 +9,10 @@ import { ChevronDown, Menu, X } from "lucide-react"; // X for close, Menu for op
 import LoginPage from "./login";
 import SignupPage from "./signup";
 import Modal from "./modal";
+import {useSelector} from 'react-redux';
+import PlaceHolder from "../../../public/image-placeholder.png";
 
+import Form from "./form";
 
 
 const Links = [
@@ -36,7 +39,14 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false); // State to handle navbar open/close
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [showForm, setShowForm] = useState('login')
-
+    const {user} = useSelector(store => store.userReducer);
+    
+    useEffect(() => {
+      console.log(user)
+    
+      
+    }, [])
+    
     const toggleNavbar = () => {
         setIsOpen(!isOpen); // Toggle the navbar
     };
@@ -66,7 +76,9 @@ const Navbar = () => {
             </span>
 
             {/* Action buttons */}
-            <span className="flex md:hidden flex-row justify-center items-center w-auto px-10 gap-x-4">
+            {
+                !user &&
+                <span className="flex md:hidden flex-row justify-center items-center w-auto px-10 gap-x-4">
                 <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin"
                     onClick={() => {
                         setShowForm('login');
@@ -79,6 +91,8 @@ const Navbar = () => {
                         toggleModal();
                     }} />
             </span>
+            }
+            
 
             {/* Mobile Menu - Only visible on small screens */}
             <div
@@ -116,17 +130,51 @@ const Navbar = () => {
                 {/* Toggle between the menu icon and the close icon */}
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
-
+            {
+                    user &&
+                    <span className="flex md:hidden flex-row justify-center items-center w-auto px-10 gap-x-4">
+                    {/* <Button name="Login" customClass="bg-[#000] text-[#fff] font-thin" onClick={() => { setIsFormModalOpen(true) }} /> */}
+    
+    
+                    {/*User name */}
+    
+                   
+                    <p className="font-inter text-[14px] text-white font-semibold mr-2">
+                        {user?user.name:" "}
+                    </p>
+    
+                    <Image
+                        src={PlaceHolder}
+                        alt="image-placeholder"
+                        height="34"
+                        width="34"
+                        className="hover:cursor-pointer"
+                        onClick={toggleModal}
+                    />
+                </span>
+                }
+       
             {/*Login/Signup Modal */}
-            {isModalOpen && (
-                <Modal onClose={toggleModal}>
-                    {showForm === 'login' ?
-                        <LoginPage closeModal={toggleModal} changeForm={setShowForm} />
+
+            {isModalOpen &&
+
+                <>
+                {
+                 user ?
+                        <Modal onClose={toggleModal}>
+                            <Form closeModal={toggleModal} />
+                        </Modal>
                         :
-                        <SignupPage closeModal={toggleModal} changeForm={setShowForm} />
-                    }
-                </Modal>
-            )}
+                        <Modal onClose={toggleModal}>
+                            {showForm === 'login' ?
+                                <LoginPage closeModal={toggleModal} changeForm={setShowForm} />
+                                :
+                                <SignupPage closeModal={toggleModal} changeForm={setShowForm} />
+                            }
+                        </Modal>
+}
+                    
+                    </>}
         </nav>
     );
 };

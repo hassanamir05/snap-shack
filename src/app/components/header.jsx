@@ -11,6 +11,7 @@ import LoginPage from '../components/login'
 import SignupPage from '../components/signup'
 import PlaceHolder from "../../../public/image-placeholder.png";
 
+import {useSelector} from 'react-redux';
 
 {/*Images*/ }
 import Logo from "../../../public/logo.png";
@@ -45,7 +46,7 @@ const Header = ({ isOpen, setIsOpen }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isFormModalOpen, setIsFormModalOpen] = useState(false);
     const [showForm, setShowForm] = useState('login')
-
+    const {user} = useSelector(store => store.userReducer);
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -86,7 +87,9 @@ const Header = ({ isOpen, setIsOpen }) => {
 
 
                 {/*User name */}
-                <p className="font-inter text-[14px] text-white font-semibold mr-2">John Doe</p>
+                <p className="font-inter text-[14px] text-white font-semibold mr-2">
+                    {user?user.name:" "}
+                </p>
 
                 <Image
                     src={PlaceHolder}

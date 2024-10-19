@@ -4,11 +4,10 @@ import Pointer from "../../../public/pointer.png";
 import Image from "next/image";
 
 const details = [
-    "Lorem ipsum dolor set",
-    "Lorem ipsum dolor set",
-    "Lorem ipsum dolor set",
-    "Lorem ipsum dolor set",
-    "Lorem ipsum dolor set",
+    "Up to 2 uber eats accounts per day",
+"Minimum of 2 $20 uber eats promos", 
+"Access to full guides on how to place orders and get the most value ",
+ "Some accounts have 2 $20 off promos some have 2 $25 off some $30 promos"
 ];
 
 const PricingCard = ({ name, price, duration, buttonCustomClass = "", customClass = "" }) => {

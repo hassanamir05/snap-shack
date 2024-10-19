@@ -6,6 +6,7 @@ import { X } from 'lucide-react'
 
 import Logo from '../../../public/logo.png'
 import PricingTag from '../../../public/pricing-tag.png'
+import Link from 'next/link';
 
 export default function Component({ isOpen, setIsOpen }) {
     const [isLargeScreen, setIsLargeScreen] = useState(true)
@@ -44,8 +45,10 @@ export default function Component({ isOpen, setIsOpen }) {
             </span>
 
             <span className="flex flex-row w-full leading-[19px] items-center my-[25px]">
+            <Link href="/pricing">
                 <Image src={PricingTag} alt="pricing-tag" height={19} width={19} className="h-[19px] w-[19px] mr-2" />
                 Explore Pricing
+            </Link>
             </span>
 
             <span className="flex flex-col gap-y-[2px] my-3">
