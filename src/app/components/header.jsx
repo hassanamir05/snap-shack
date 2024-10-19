@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import Button from "./button";
 import Image from "next/image";
 import Form from "./form";
-import Modal from "./modal";
+import Modal from "./modal.jsx";
 import { Menu } from "lucide-react";
 import HeaderSuggestionCard from './header-recommendation.jsx';
-import LoginPage from '../components/login'
-import SignupPage from '../components/signup'
+import LoginPage from '../components/login.jsx'
+import SignupPage from '../components/signup.jsx'
 import PlaceHolder from "../../../public/image-placeholder.png";
 
 import {useSelector} from 'react-redux';

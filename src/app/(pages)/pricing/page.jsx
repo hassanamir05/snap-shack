@@ -5,14 +5,14 @@ import React, { useState } from "react";
 {
   /*Components*/
 }
-import Navbar from "../../components/navbar";
-import Heading from "../../components/heading";
-import Text from "../../components/text";
-import PricingSwitch from "../../components/switch";
-import PricingCard from "../../components/pricing-card";
-import SuggestionCard from "../../components/suggestion-card";
-import Footer from "../../components/footer";
-import PricingTable from '../../components/pricing-table'
+import Navbar from "../../components/navbar.jsx";
+import Heading from "../../components/heading.jsx";
+import Text from "../../components/text.jsx";
+import PricingSwitch from "../../components/switch.jsx";
+import PricingCard from "../../components/pricing-card.jsx";
+import SuggestionCard from "../../components/suggestion-card.jsx";
+import Footer from "../../components/footer.jsx";
+import PricingTable from '../../components/pricing-table.jsx'
 
 {
   /*Images*/

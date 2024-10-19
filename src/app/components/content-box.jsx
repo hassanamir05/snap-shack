@@ -2,11 +2,11 @@
 import Image from "next/image"
 import Logo from '../../../public/logo.png'
 import Heading from "./heading"
-import Text from "./text"
-import SuggestionCard from './suggestion-card'
-import Button from "./button"
-import Input from './input'
-import Message from './message'
+import Text from "./text.jsx"
+import SuggestionCard from './suggestion-card.jsx'
+import Button from "./button.jsx"
+import Input from './input.jsx'
+import Message from './message.jsx'
 import Help from '../../../public/help.png'
 
 import Burger from '../../../public/burger.png'
@@ -18,7 +18,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from "react"
 import { useDispatch } from 'react-redux'
-import { fetchEmail } from '../lib/actions/user';
+import { fetchEmail } from '../lib/actions/user.js';
 
 const details = [
     {

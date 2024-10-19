@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
+    "module": "es2022", // Change from commonjs to es2022
+    "target": "es2022", // You can set this to the version you need
     "paths": {
       "@/*": ["./src/*"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "es2022" // Change this as well
     }
   }
 }

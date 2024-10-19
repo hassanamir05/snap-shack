@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Sidebar from "./components/sidebar";
-import Header from "./components/header";
-import ContentBox from "./components/content-box";
-import Navbar from "@/app/components/navbar";
+import Sidebar from "./components/sidebar.jsx";
+import Header from "./components/header.jsx";
+import ContentBox from "./components/content-box.jsx";
+import Navbar from "@/app/components/navbar.jsx";
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);

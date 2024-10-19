@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { X, Upload } from 'lucide-react';
-import Button from './button';
+import Button from './button.jsx';
 import InputField from './input-field';
 
 

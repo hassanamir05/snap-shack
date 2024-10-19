@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { X, Mail, Lock } from 'lucide-react';
-import Button from './button';
-import InputFieldLabel from './label-input';
+import Button from './button.jsx';
+import InputFieldLabel from './label-input.jsx';
 import { useDispatch } from 'react-redux'
-import { login } from '../lib/actions/user';
+import { login } from '../lib/actions/user.js';
 import { redirect } from 'next/dist/server/api-utils';
 
 

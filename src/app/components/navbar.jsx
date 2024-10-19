@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Logo from "../../../public/logo.png";
 import Link from "next/link";
-import Button from "../components/button";
+import Button from "../components/button.jsx";
 import { ChevronDown, Menu, X } from "lucide-react"; // X for close, Menu for open
 import LoginPage from "./login";
-import SignupPage from "./signup";
-import Modal from "./modal";
+import SignupPage from "./signup.jsx";
+import Modal from "./modal.jsx";
 import {useSelector} from 'react-redux';
 import PlaceHolder from "../../../public/image-placeholder.png";
 
-import Form from "./form";
+import Form from "./form.jsx";
 
 
 const Links = [
