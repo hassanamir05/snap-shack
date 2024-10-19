@@ -51,7 +51,7 @@ const ContentBox = () => {
     const dispatch = useDispatch();
     
     const fetchOTP=async (email)=>{
-        let res=await axios.post("http://localhost:5000/check-otp",{email})
+        let res=await axios.post(`${process.env.SMTP_PUBLIC_BANKEND_URL}/check-otp`,{email})
         if(res){
             // print(res.data.otp)
             console.log(res.data.otp)
